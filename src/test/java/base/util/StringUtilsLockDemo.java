@@ -1,11 +1,14 @@
-import utils.StringUtils;
+package base.util;
+
+import junit.framework.TestCase;
+import org.junit.Assert;
 
 import java.util.*;
 import java.util.function.Function;
 
-public class StringUtilsTest {
+public class StringUtilsLockDemo extends TestCase {
 
-    public static void main(String[] args) {
+    public void test() {
         class C {
             String name = "C name";
         }
@@ -27,7 +30,8 @@ public class StringUtilsTest {
 
         A a = new A();
         Map<String, String> result = StringUtils.readInstance(a, Arrays.asList("name", "bList", "cMap"), functionMap);
-        System.out.println(result.values());
+
+        Assert.assertEquals(result.get("name"), a.name);
     }
 
 }

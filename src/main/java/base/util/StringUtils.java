@@ -1,4 +1,4 @@
-package util;
+package base.util;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -30,7 +30,7 @@ public class StringUtils {
     }
 
     public static Map<String, String> readInstance(Object obj, List<String> fieldNames, Map<Class<?>, Function<Object, String>> customReaders){
-        List<Field> fields = ReflectionUtils.fieldsByName(obj, fieldNames);
+        List<Field> fields = ReflectionUtils.classFields(obj.getClass(), fieldNames);
 
         return readFields(obj, fields, customReaders);
     }
@@ -52,7 +52,7 @@ public class StringUtils {
     }
 
     public static List<Map<String, String>> batchReadInstance(List<Object> objs, List<String> fieldNames, Map<Class<?>, Function<Object, String>> customReaders){
-        List<Field> fields = ReflectionUtils.fieldsByName(objs.get(0), fieldNames);
+        List<Field> fields = ReflectionUtils.classFields(objs.get(0).getClass(), fieldNames);
 
         List<Map<String, String>> result = new ArrayList<>();
         for(Object obj : objs){
