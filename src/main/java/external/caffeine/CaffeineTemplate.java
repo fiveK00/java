@@ -1,4 +1,4 @@
-package third_part.cache;
+package external.caffeine;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
@@ -14,7 +14,7 @@ public class CaffeineTemplate<K, V> {
             .evictionListener((k, v, removalCause) -> System.out.printf("evict %s : %s, removal cause %s%n", k, v, removalCause))
             .build(i -> {
                 System.out.println("reload cache");
-                return i+1;
+                return i + 1;
             });
 
     public static void main(String[] args) throws InterruptedException {

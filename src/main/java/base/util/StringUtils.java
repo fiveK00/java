@@ -50,15 +50,4 @@ public class StringUtils {
 
         return result;
     }
-
-    public static List<Map<String, String>> batchReadInstance(List<Object> objs, List<String> fieldNames, Map<Class<?>, Function<Object, String>> customReaders){
-        List<Field> fields = ReflectionUtils.classFields(objs.get(0).getClass(), fieldNames);
-
-        List<Map<String, String>> result = new ArrayList<>();
-        for(Object obj : objs){
-            result.add(readFields(obj, fields, customReaders));
-        }
-
-        return result;
-    }
 }
