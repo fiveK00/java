@@ -7,7 +7,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * 延时任务执行器
+ * 延时任务同步执行器
+ * 目前不考虑阻塞、任务溢出、事务等问题
  */
 public class DelayTaskExecutor {
 
